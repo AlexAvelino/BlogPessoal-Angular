@@ -13,14 +13,12 @@ export class TemaService {
   constructor(private http: HttpClient) { }
 
   token = {
-    Headers: new HttpHeaders().set('Authorization', environment.token)
+    headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
   getAllTema(): Observable<Tema[]>{
-    // return this.http.get<Tema[]>('https://blogglex.herokuapp.com/tema', this.token)
-    return this.http.get<Tema[]>('https://backendthiagofaccipieri.herokuapp.com/tema',this.token);
-
-
+      return this.http.get<Tema[]>('https://blogglex.herokuapp.com/tema', this.token)
+    // return this.http.get<Tema[]>('https://backendthiagofaccipieri.herokuapp.com/tema', this.token )
   }
 
   postTema(tema: Tema): Observable<Tema>{
