@@ -1,0 +1,29 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
+// import { environment } from 'src/environments/environment.prod';
+import { Tema } from '../model/Tema';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TemaService {
+
+  constructor(private http: HttpClient) { }
+
+  token = {
+    Headers: new HttpHeaders().set('Authorization', environment.token)
+  }
+
+  getAllTema(): Observable<Tema[]>{
+    // return this.http.get<Tema[]>('https://blogglex.herokuapp.com/tema', this.token)
+    return this.http.get<Tema[]>('https://backendthiagofaccipieri.herokuapp.com/tema',this.token);
+
+
+  }
+
+  postTema(tema: Tema): Observable<Tema>{
+    return this.http.post<Tema>('https://blogglex.herokuapp.com/tema', tema, this.token)
+  }
+}
