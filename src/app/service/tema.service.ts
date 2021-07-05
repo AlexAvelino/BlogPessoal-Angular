@@ -34,6 +34,6 @@ export class TemaService {
   }
 
   deleteTema(id: number){
-    return this.http.delete(`https://blogglex.herokuapp.com/${id}`, this.token)
+    return this.http.delete(`https://blogglex.herokuapp.com/tema/${id}`, this.token)
   }
 }
