@@ -15,24 +15,29 @@ export class PostagemService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
-  getAllPostagens(): Observable<Postagem[]>{
-    return this.http.get<Postagem[]>('https://blogglex.herokuapp.com/postagens',this.token)
+  //Buscar todas as postagens
+  getAllPostagens(): Observable<Postagem[]> {
+    return this.http.get<Postagem[]>('https://blogglex.herokuapp.com/postagens', this.token)
   }
 
-  getByIdPostagem(id: number): Observable<Postagem>{
+  //Buscar postagens por id
+  getByIdPostagem(id: number): Observable<Postagem> {
     return this.http.get<Postagem>(`https://blogglex.herokuapp.com/postagens/${id}`, this.token)
   }
 
-  postPostagem(postagem: Postagem): Observable<Postagem>{
+  //Postar uma postagem
+  postPostagem(postagem: Postagem): Observable<Postagem> {
     return this.http.post<Postagem>('https://blogglex.herokuapp.com/postagens', postagem, this.token)
   }
 
-putPostagem(postagem: Postagem): Observable<Postagem>{
-  return this.http.put<Postagem>('https://blogglex.herokuapp.com/postagens', postagem, this.token)
-}
+  //Alterar uma postagem
+  putPostagem(postagem: Postagem): Observable<Postagem> {
+    return this.http.put<Postagem>('https://blogglex.herokuapp.com/postagens', postagem, this.token)
+  }
 
-deletePostagem(id: number){
-  return this.http.delete(`https://blogglex.herokuapp.com/postagens/${id}`, this.token)
-}
+  //Deletar uma postagem
+  deletePostagem(id: number) {
+    return this.http.delete(`https://blogglex.herokuapp.com/postagens/${id}`, this.token)
+  }
 
 }
